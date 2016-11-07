@@ -2,56 +2,102 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="shoestrap.css">
+<script src="path/to/vanilla.js"></script>
   <title></title>
 </head>
 <body>
 
   <form>
+
+    <div id="msg"></div>
     <div class="row">
-      <div class="col-2">
+      <div id='username' class="col-2">
         Username: 
       </div>
-        <input type='text' /> <br>
+        <input type='text' placeholder="John123" /> <br>
       </div>
 
     <div class="row">
       <div class="col-2">
         Email: 
       </div>
-        <input type='text' /> <br>
+        <input type='text' placeholder="john123@email.com" /> <br>
       </div>
 
     <div class="row">
-      <div class="col-2">
+      <div id="password" class="col-2">
         Password: 
       </div>
-        <input type='text' /> <br>
+        <input type='password' /> <br>
       </div>
 
     <div class="row">
-      <div class="col-2">
+      <div id="password2" class="col-2">
         Repeat Password: 
       </div>
-        <input type='text' /> <br>
+        <input type='password' /> <br>
       </div>
 
     <div class="row">
-      <div class="col-2">
+      <div id="number" class="col-2">
         Telephone: 
       </div>
         <input type='text' /> <br>
       </div>
 
     <div class="row">
-      <div class="col-2">
+      <div id="country" class="col-2">
         Country: 
       </div>
         <input type='text' /> <br>
       </div>
-      
+
       <div>
-    <button class="col-1" type="submit">Submit</button>
+    <button  id="submit" class="col-1" type="submit" onclick="validate()">Submit</button>
     </div>
+  
+
+  
+
+    <script type="text/javascript">
+      function validate={
+        document.getElementById('submit').onclick= alert("You clicked submit");
+      
+
+        var usernameElement = document.getElementById('username');
+        var username = usernameElement.value;
+        if(username.length<6){
+          document.getElementById('msg').innerHTML = "UserName is too short";
+          document.getElementById('msg').style.backgroundColor = red;
+        }else{
+          document.getElementById('msg').style.backgroundColor = green;
+          }
+
+        var passwordElement = document.getElementById('password');
+        var password = passwordElement.value;
+        var password2Element = document.getElementById('password2');
+        var password2 = password2Element.value;
+        if(password2 != password){
+          document.getElementById('msg').innerHTML="Passwords dont match";
+        }
+
+        var countryElement = document.getElementById('country');
+        var country = countryElement.value;
+
+        if(country != "USA" && country != "Israel"){
+          document.getElementById('msg').innerHTML= "Either USA or Israel";
+        }
+
+        var numberElement = document.getElementById('number');
+        var number = numberElement.value;
+
+        if(number.length > 15){
+          document.getElementById('number').innerHTML = "Number is too long, shorten it";
+    }
+  }
+    </script>
+
+
 
     
 
@@ -59,11 +105,3 @@
 
 </body>
 </html>
-
-   <!-- Username: <input type='text' /> <br>
-   Email: <input type='text' /> <br>
-   Password: <input type='password' /> <br>
-   Repeat Password: <input type='text' /> <br>
-   Telephone: <input type='number' /> <br>
-   Country: <input type='text' /> <br>
-   <input type="submit" value="submit"> -->
